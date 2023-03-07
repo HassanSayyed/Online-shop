@@ -1,0 +1,9 @@
+.page-not-found {
+    height: 70vh;
+    display: grid;
+    place-items: center;
+    color: var(--primary-color);
+    font-weight: bolder;
+    font-size: 70px;
+    text-shadow: 5px 5px 3px var(--bg-dark-color);
+}
