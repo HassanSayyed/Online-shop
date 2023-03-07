@@ -1,0 +1,27 @@
+.products-container {
+    margin: 50px 20px;
+}
+
+.products {
+    display: flex;
+    flex-flow: wrap;
+    gap: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+    .products-container {
+        margin: 75px 0;
+    }
+
+    .products {
+        gap: 20px;
+    }
+}
+
+#products-title {
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    color: var(--bg-dark-color);
+    text-shadow: 1px 2px 2px var(--primary-color);
+}
