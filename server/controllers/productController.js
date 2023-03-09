@@ -13,9 +13,9 @@ const createProduct = async (req, res) => {
 
   try {
     const savedProduct = await product.save();
-    res.status(StatusCodes.CREATED).json({ product: savedProduct });
+    return res.status(StatusCodes.CREATED).json({ product: savedProduct });
   } catch (error) {
-    res
+    return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ error: error.message });
   }
@@ -26,7 +26,7 @@ const getAllProducts = async (req, res) => {
     const products = await Product.find();
     res.status(StatusCodes.OK).json({ products });
   } catch (error) {
-    res
+    return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ error: error.message });
   }
@@ -47,9 +47,9 @@ const getProductById = async (req, res) => {
         .status(StatusCodes.NOT_FOUND)
         .json({ error: "Product not found" });
     }
-    res.status(StatusCodes.OK).json({ product });
+    return res.status(StatusCodes.OK).json({ product });
   } catch (error) {
-    res
+    return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ error: error.message });
   }
@@ -77,9 +77,9 @@ const updateProductById = async (req, res) => {
         .json({ error: "Product not found" });
     }
 
-    res.status(StatusCodes.OK).json({ product });
+    return res.status(StatusCodes.OK).json({ product });
   } catch (error) {
-    res
+    return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ error: error.message });
   }
@@ -102,9 +102,9 @@ const deleteProductById = async (req, res) => {
         .json({ error: "Product not found" });
     }
     // delete is successful send 204 (no content)
-    res.sendStatus(StatusCodes.NO_CONTENT);
+    return res.sendStatus(StatusCodes.NO_CONTENT);
   } catch (error) {
-    res
+    return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ error: error.message });
   }

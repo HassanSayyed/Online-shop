@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const xss = require("xss-clean");
 const cors = require("cors");
 require("dotenv").config();
+const { StatusCodes } = require("http-status-codes");
 
 // set security HTTP headers
 app.use(helmet());
@@ -20,13 +21,21 @@ app.options("*", cors());
 
 // routes
 const productRouter = require("./routes/productsRoutes");
-
+const authRoutter = require("./routes/authRoutes");
 app.use("/api/v1/products", productRouter);
+app.use("/api/v1/auth", authRoutter);
 
 app.get("/", (req, res) => res.send("Hello World!"));
 
 // database
 const connectDB = require("./db/connect");
+
+// Define global middleware to handle 404 errors
+app.use((req, res, next) => {
+  res
+    .status(StatusCodes.NOT_FOUND)
+    .send({ error: `Not found: ${req.originalUrl}` });
+});
 
 const port = process.env.PORT || 8000;
 
