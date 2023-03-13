@@ -26,7 +26,7 @@ const Products = () => {
             url="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
             title={product.name}
             price={product.price}
-            id={product.id}
+            id={product._id}
           />
         ))}
       </div>

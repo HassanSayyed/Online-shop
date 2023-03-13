@@ -19,8 +19,19 @@ export const ProductProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
+  const getProductById = async (id) => {
+    try {
+      const response = await api.get(`/products/${id}`);
+      return response.data.product;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <AppContext.Provider value={{ products }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ products, getProductById }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 

@@ -20,6 +20,5 @@ ProductCard.defaultProps = {
   url: "",
   title: "product",
   price: 0,
-  id: 0,
 };
 export default ProductCard;
