@@ -1,7 +1,7 @@
 const Home = () => {
   return (
     <div className="hero">
-      <div class="card text-bg-dark border-0">
+      <div class="text-bg-dark border-0">
         <img
           src="../assets/hero.jpg"
           class="card-img"
