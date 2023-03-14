@@ -110,10 +110,38 @@ const deleteProductById = async (req, res) => {
   }
 };
 
+const getAllProductsCount = async (req, res) => {
+  try {
+    const count = await Product.countDocuments();
+    res.status(StatusCodes.OK).json({ count });
+  } catch (err) {
+    console.error(err);
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ error: "Server error" });
+  }
+};
+
+const getRecentProducts = async (req, res) => {
+  try {
+    const recentProducts = await Product.find()
+      .sort({ createdAt: -1 })
+      .limit(4);
+    res.status(StatusCodes.OK).json({ recentProducts });
+  } catch (err) {
+    console.error(err);
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ error: "Server error" });
+  }
+};
+
 module.exports = {
   createProduct,
   getAllProducts,
   getProductById,
   updateProductById,
   deleteProductById,
+  getAllProductsCount,
+  getRecentProducts,
 };

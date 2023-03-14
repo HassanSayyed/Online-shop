@@ -8,6 +8,8 @@ const {
   getProductById,
   updateProductById,
   deleteProductById,
+  getAllProductsCount,
+  getRecentProducts,
 } = require("../controllers/productController");
 
 const productSchema = Joi.object({
@@ -22,6 +24,9 @@ router
   .route("/")
   .get(getAllProducts)
   .post(validateRequest(productSchema), createProduct);
+
+router.route("/count").get(getAllProductsCount);
+router.route("/recent").get(getRecentProducts);
 
 router
   .route("/:id")
