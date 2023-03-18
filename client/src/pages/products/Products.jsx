@@ -23,7 +23,7 @@ const Products = () => {
         />
         {products.map((product) => (
           <ProductCard
-            url="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+            url={product.image}
             title={product.name}
             price={product.price}
             id={product._id}

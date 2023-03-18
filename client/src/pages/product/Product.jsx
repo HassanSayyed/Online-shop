@@ -25,7 +25,11 @@ const Product = () => {
         <div className="left">
           <img
             className="img"
-            src={product.image ? product.image : "../assets/hero.jpg"}
+            src={
+              product.image || product.image !== ""
+                ? product.image
+                : "../assets/hero.jpg"
+            }
             alt=""
             loading="lazy"
           />
@@ -42,7 +46,6 @@ const Product = () => {
           <div className="description">{product.description}</div>
         </div>
       </div>
-      {/* Single Product info {JSON.stringify(product)} */}
     </div>
   );
 };

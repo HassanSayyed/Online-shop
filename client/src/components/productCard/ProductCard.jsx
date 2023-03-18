@@ -6,7 +6,10 @@ const ProductCard = ({ url, title, price, id }) => {
   return (
     <div className="product-card" onClick={() => navigate("/product/" + id)}>
       <div className="thumbnail">
-        <img src={url} alt="product card" />
+        <img
+          src={url || url !== "" ? url : "../assets/hero.jpg"}
+          alt="product card"
+        />
       </div>
       <div className="prod-details">
         <span className="name">{title}</span>
